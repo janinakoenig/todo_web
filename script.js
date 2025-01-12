@@ -3,7 +3,6 @@ let todos = JSON.parse(localStorage.getItem("todos")) || [];
 const todoInput = document.querySelector(".todo-input");
 const clearAllButton = document.querySelector(".clear-button");
 
-
 clearAllButton.addEventListener("click", () => {
     console.log("test1");
     //clearAllTodos();
@@ -20,6 +19,10 @@ function loadTodos() {
 }
 
 function addTodo (todo) {
+    if (todos.length >= 7) {
+        alert("Maximum Amount of todos reached");
+        return;
+    }
     const  todoText = todoInput.value.trim();
 
     const todoObject = {
@@ -35,8 +38,8 @@ function addTodo (todo) {
 }
 
 function deleteTodo(todoElement, todoObject) {
-    todoElement.remove(); // Entferne das To-Do aus der DOM
-    removeTodoFromLocalStorage(todoObject); // Entferne das To-Do aus dem Local Storage
+    todoElement.remove();
+    removeTodoFromLocalStorage(todoObject);
 }
 
 function checkTodo(checkbox, todoElement, todoObject) {
@@ -52,16 +55,12 @@ function checkTodo(checkbox, todoElement, todoObject) {
 }
 
 function clearAllTodos () {
-    console.log("test");
-     // 1. Entferne alle Todos aus der DOM
      const todoList = document.querySelector(".todos");
-     todoList.innerHTML = ""; // Entfernt alle enthaltenen Elemente
+     todoList.innerHTML = "";
  
-     // 2. Lösche alle Todos aus dem Local Storage
-     todos = []; // Leere das Array, das die Todos enthält
-     localStorage.setItem("todos", JSON.stringify(todos)); // Aktualisiere den Local Storage
- 
-     // 3. (Optional) Zeige eine Bestätigung in der Konsole
+     todos = [];
+     localStorage.setItem("todos", JSON.stringify(todos));
+
      console.log("Alle Todos wurden entfernt.");
 }
 
@@ -94,11 +93,11 @@ function addTodoToDOM(todoObject, todoText) {
 
 
     deleteButton.addEventListener("click", () => {
-        deleteTodo(todoElement, todoObject); // Rufe die deleteTodo-Funktion auf
+        deleteTodo(todoElement, todoObject);
     });
 
     checkbox.addEventListener("change", () => {
-        checkTodo(checkbox, todoElement, todoObject); // todoObject wird korrekt übergeben
+        checkTodo(checkbox, todoElement, todoObject);
     });
 
     if (todoObject.completed) {
