@@ -5,7 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('C:/Users/koeni/devprojects/todo_web/sources/5309014.jpg');
+    background-image: url("sources/20290298_6260752.jpg");
 }
 
 
@@ -27,9 +27,11 @@ body {
 h1 {
     margin: 10px;
     vertical-align: text-top;
-    background-color: rgba(253, 243, 151);
+    background-color: #6c5d7e;
     padding: 10px;
     border-radius: 25px;
+    color:white;
+    border: 2px solid  rgba(70, 76, 97, 0.5);
 }
 
 todo-input {
@@ -38,19 +40,68 @@ todo-input {
 
 .add-button {
     border-radius: 20px;
+    color: white;
+    border: 2px solid  #5d737e;
+    background-color: rgba(70, 76, 97, 0.5);
+    transition: transform 0.3s ease;
 }
+
+.add-button:hover {
+    transform: scale(1.2);
+    cursor: pointer; 
+}
+
+.delete-button {
+    transition: transform 0.3s ease;
+}
+
+.delete-button:hover {
+    transform: scale(1.2); 
+    cursor: pointer; 
+}
+
+
 
 .todo-input {
     flex: 1;
     outline: none;
     padding: 10px 10px 10px 20px;
-    background-color:  rgba(70, 76, 97, 0.5);
+    background-color:  #5d737e;
     border: 2px solid  rgba(70, 76, 97, 0.5);
     border-radius: 30px;
-    color: #eee;
     font-size: 16px;
     margin-right: 10px;
+    color: white;
   }
+
+  .todos-list {
+    position: relative; /* Ensures the button is positioned relative to this container */
+    height: 400px; /* Set a height for demonstration */
+    width: 100%;;
+    padding-bottom: 60px; /* Ensure space for the button */
+    overflow: auto; /* Allow scrolling if content exceeds height */
+}
+
+.clear-button {
+    position: absolute;
+    bottom: 0px; /* Distance from the bottom of the container */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Correct centering offset */
+    margin: 10px;
+    vertical-align: text-top;
+    background-color: #6c5d7e;
+    padding: 10px;
+    border-radius: 25px;
+    color:white;
+    border: 2px solid  rgba(70, 76, 97, 0.5);
+}
+
+.clear-button:hover {
+    transform: scale(1.1) translateX(-50%);
+    background-color: #ff1a1a9c;
+    cursor: pointer; 
+}
+
   
 
 li {
@@ -59,10 +110,21 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #463c7b;
+    background-color: #5d737e;
     border-radius: 5px;
     margin: 10px;
     padding: 10px 12px;
-    border: 2px solid #e6b7eca1;
+    border: 2px solid  rgba(70, 76, 97, 0.5);
     transition: all 0.2s ease;
 }
+
+.todos {
+    font-family: 'Arial';
+    font-size: 16px;
+    color: white;
+}
+
+input::placeholder {
+    color: white;
+    font-style: italic;
+  }
